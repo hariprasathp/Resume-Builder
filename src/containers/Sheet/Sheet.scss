@@ -1,0 +1,40 @@
+:root {
+  --accent-color: #0099cc;
+}
+div.container {
+  font-family: "Roboto", sans-serif;
+
+  &.header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    div.line {
+      &.horizontal {
+        flex: 1 1 1px;
+        background-color: var(--accent-color);
+        height: 10px;
+      }
+    }
+    div.label {
+      color: var(--accent-color);
+      font-size: 25px;
+      font-weight: 500;
+    }
+  }
+
+  &.content {
+    display: flex;
+    table {
+      flex: 1 1 1px;
+
+      tbody {
+        vertical-align: top;
+      }
+    }
+    &.skills {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
