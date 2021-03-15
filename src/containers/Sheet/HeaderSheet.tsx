@@ -1,7 +1,10 @@
 import React from "react";
 import "./Sheet.scss";
+import { observer } from "mobx-react";
+import { useStore } from "../../store";
 
-export const HeaderSheet: React.FC = () => {
+export const HeaderSheet: React.FC = observer(() => {
+  const { resumeStore } = useStore();
   return (
     <div>
       <div
@@ -14,21 +17,22 @@ export const HeaderSheet: React.FC = () => {
       >
         <div style={{ width: "80%" }}>
           <h1 style={{ textTransform: "uppercase", color: "#0099cc" }}>
-            HariPrasath P
+            {resumeStore.header.name}
           </h1>
           <p>
-            104, Nachimuthu Gounder Street, Pollachi
+            {resumeStore.header.address}
             <br />
-            Coimbatore TamilNadu
+            {resumeStore.header.city}
+            &nbsp;&nbsp; {resumeStore.header.state}
             {"  "}
             <br />
-            +91 8754957794
+            {resumeStore.header.mobile}
             <br />
-            hari.harithunder391@gmail.com
+            {resumeStore.header.email}
           </p>
           <div className="horizontal line"></div>
         </div>
       </div>
     </div>
   );
-};
+});

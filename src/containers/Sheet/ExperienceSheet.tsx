@@ -1,7 +1,15 @@
 import React from "react";
 import "./Sheet.scss";
+import { observer } from "mobx-react";
+import { useStore } from "../../store";
 
-export const ExperienceSheet: React.FC = () => {
+export const ExperienceSheet: React.FC = observer(() => {
+  const { resumeStore } = useStore();
+
+  if (!resumeStore.experience || resumeStore.experience.length === 0) {
+    return null;
+  }
+
   return (
     <>
       <div className="header container">
@@ -11,16 +19,22 @@ export const ExperienceSheet: React.FC = () => {
       <div className="experience content container">
         <table>
           <tbody>
-            <tr>
-              <td style={{ width: "17%" }}>2015-Present</td>
-              <td>
-                <b>Software Engineer</b>
-                <p>Visinture Strategic Solutions Pvt. Ltd</p>
-              </td>
-            </tr>
+            {resumeStore.experience.map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td style={{ width: "17%" }}>
+                    {item.yearStart}-{item.yearEnd}
+                  </td>
+                  <td>
+                    <b>{item.designation}</b>
+                    <p>{item.company}</p>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
     </>
   );
-};
+});
