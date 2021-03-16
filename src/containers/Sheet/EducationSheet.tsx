@@ -1,7 +1,15 @@
 import React from "react";
 import "./Sheet.scss";
+import { observer } from "mobx-react";
+import { useStore } from "../../store";
 
-export const EducationSheet: React.FC = () => {
+export const EducationSheet: React.FC = observer(() => {
+  const { resumeStore } = useStore();
+
+  if (!resumeStore.education || resumeStore.education.length == 0) {
+    return null;
+  }
+
   return (
     <>
       <div className="header container">
@@ -11,16 +19,20 @@ export const EducationSheet: React.FC = () => {
       <div className="education content container">
         <table>
           <tbody>
-            <tr>
-              <td style={{ width: "17%" }}>2011-2015</td>
-              <td>
-                <b>Bachelor of Engineering (Computer Science)</b>
-                <p>Dr. Mahalingam College of Engineering and Technology</p>
-              </td>
-            </tr>
+            {resumeStore.education.map((item, index) => {
+              return (
+                <tr key={index}>
+                  <td style={{ width: "17%" }}>{item.graduatedYear}</td>
+                  <td>
+                    <b>{item.degree}</b>
+                    <p>{item.institute}</p>
+                  </td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
     </>
   );
-};
+});

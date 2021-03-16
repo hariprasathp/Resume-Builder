@@ -1,7 +1,10 @@
 import React from "react";
 import "./Sheet.scss";
+import { useStore } from "../../store";
+import { observer } from "mobx-react";
 
-export const SkillsSheet: React.FC = () => {
+export const SkillsSheet: React.FC = observer(() => {
+  const { resumeStore } = useStore();
   return (
     <>
       <div className="header container">
@@ -9,12 +12,8 @@ export const SkillsSheet: React.FC = () => {
         <div className="horizontal line"></div>
       </div>
       <div className="skills content container">
-        <ul>
-          <li>HTML5</li>
-          <li>CSS3</li>
-          <li>ReactJS</li>
-        </ul>
+        {resumeStore.skills.skills.join(", ")}
       </div>
     </>
   );
-};
+});

@@ -16,9 +16,9 @@ export const HeaderSheet: React.FC = observer(() => {
         }}
       >
         <div style={{ width: "80%" }}>
-          <h1 style={{ textTransform: "uppercase", color: "#0099cc" }}>
+          <h3 style={{ textTransform: "uppercase", color: "#0099cc" }}>
             {resumeStore.header.name}
-          </h1>
+          </h3>
           <p>
             {resumeStore.header.address}
             <br />
