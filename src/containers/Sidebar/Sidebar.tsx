@@ -44,6 +44,7 @@ export const Sidebar: React.FC = () => {
           <Route path="/experience" component={ExperienceComponent} />
           <Route path="/education" component={EducationComponent} />
           <Route path="/skills" component={SkillsComponent} />
+          <Route path="/" render={() => <Redirect to="/header" />} />
         </Switch>
       </Card>
     </>
