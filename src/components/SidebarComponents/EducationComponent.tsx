@@ -52,11 +52,11 @@ const EducationForm: React.FC<IEducationFormProps> = observer(
 
         <Form.Group as={Row} controlId="formHorizontalYear">
           <Form.Label column sm={3}>
-            Year
+            Graduated Year
           </Form.Label>
           <Col sm={10}>
             <Form.Control
-              type="Date"
+              type="number"
               name="graduatedYear"
               onChange={onChange}
               placeholder="Enter Year Graduated"
