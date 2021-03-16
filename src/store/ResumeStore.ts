@@ -1,12 +1,12 @@
 import { makeAutoObservable } from "mobx";
 
 export class Header {
-  name: string = "";
-  mobile: string = "";
-  email: string = "";
-  address: string = "";
-  city: string = "";
-  state: string = "";
+  name: string = "Your Name";
+  mobile: string = "Your Mobile Number";
+  email: string = "Your Email";
+  address: string = "Your Address";
+  city: string = "City";
+  state: string = "State";
 
   constructor() {
     makeAutoObservable(this);
@@ -33,9 +33,9 @@ export class Experience {
 }
 
 export class Education {
-  degree: string = "";
+  degree: string = "Your Degree";
   graduatedYear: number = new Date().getFullYear();
-  institute: string = "";
+  institute: string = "Institute Studied";
 
   constructor() {
     makeAutoObservable(this);
@@ -45,9 +45,21 @@ export class Education {
     ((this as unknown) as Record<string, string | number>)[propName] = value;
   }
 }
+
+export class Skills {
+  skills: string[] = [];
+
+  constructor() {
+    makeAutoObservable(this);
+  }
+  public update(value: string[]): void {
+    this.skills = value;
+  }
+}
+
 export class ResumeStore {
   header: Header = new Header();
-  skills: string[] = [];
+  skills: Skills = new Skills();
   experience: Experience[] = [];
   education: Education[] = [];
 
@@ -57,5 +69,9 @@ export class ResumeStore {
 
   public addNewExperience() {
     this.experience.push(new Experience());
+  }
+
+  public addNewEducation() {
+    this.education.push(new Education());
   }
 }
