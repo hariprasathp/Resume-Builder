@@ -5,22 +5,6 @@ import { useStore } from "../../store";
 
 export const HeaderComponent: React.FC = observer(() => {
   const { resumeStore } = useStore();
-  // const [data, setData] = useState({
-  //   name: "",
-  //   mobile: "",
-  //   email: "",
-  //   address: "",
-  //   city: "",
-  //   state: "",
-  // });
-
-  // useEffect(() => {
-  //   resumeStore.updateResumeData(data);
-  // }, [data]);
-
-  // const updateField = (key: string, value: string) => {
-  //   setData({ ...data, [key]: value });
-  // };
 
   const onChange = (
     event: React.ChangeEvent<
@@ -36,7 +20,7 @@ export const HeaderComponent: React.FC = observer(() => {
   };
   return (
     <>
-      <Form>
+      <Form style={{ padding: "5%" }}>
         <Form.Group as={Row} controlId="formHorizontalName">
           <Form.Label column sm={3}>
             Full Name

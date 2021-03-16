@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useStore, Experience } from "../../store";
 import { observer } from "mobx-react";
@@ -29,7 +29,7 @@ const ExperienceForm: React.FC<IExperienceFormProps> = observer(
             <Form.Control
               type="text"
               placeholder="Enter Company"
-              name={`company`}
+              name="company"
               onChange={onChange}
               defaultValue={experience.company}
             />
@@ -55,7 +55,7 @@ const ExperienceForm: React.FC<IExperienceFormProps> = observer(
           <Form.Label column sm={3}>
             Year
           </Form.Label>
-          <Col sm={10}>
+          <Col sm={3}>
             <Form.Control
               type="number"
               placeholder="From"
@@ -64,7 +64,8 @@ const ExperienceForm: React.FC<IExperienceFormProps> = observer(
               defaultValue={experience.yearStart}
             />
           </Col>
-          <Col sm={10}>
+          -
+          <Col sm={3}>
             <Form.Control
               type="number"
               placeholder="To"
@@ -87,7 +88,7 @@ export const ExperienceComponent: React.FC = observer(() => {
   };
 
   return (
-    <div>
+    <div className="text-center" style={{ padding: "5%" }}>
       {resumeStore.experience.map((item, index) => {
         return <ExperienceForm key={index} experience={item} />;
       })}
