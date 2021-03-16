@@ -1,14 +1,22 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ResumeBuilder } from "./containers/ResumeBuilder";
 
 import { RootStore, StoreProvider } from "./store";
 
+import { createBrowserHistory } from "history";
+import { Router } from "react-router-dom";
+
+const customHistory = createBrowserHistory();
+
 const store = new RootStore();
-ReactDOM.render(
-  <StoreProvider value={store}>
-    <ResumeBuilder />
-  </StoreProvider>,
-  document.getElementById("root")
+
+const App: React.FC = () => (
+  <Router history={customHistory}>
+    <StoreProvider value={store}>
+      <ResumeBuilder />
+    </StoreProvider>
+  </Router>
 );
+
+export default App;
